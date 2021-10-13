@@ -259,3 +259,9 @@ paket-files/
 # Python Tools for Visual Studio (PTVS)
 __pycache__/
 *.pyc
+
+# Prevent Sensitive Data From Being Submitted
+/SAT.UI.MVC/configs
+SAT.UI.MVC/configs
+/configs
+configs
