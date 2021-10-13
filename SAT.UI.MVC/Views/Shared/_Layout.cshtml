@@ -8,8 +8,10 @@
     <title>Small Business - Start Bootstrap Template</title>
     <!-- Favicon-->
     <link rel="icon" type="image/x-icon" href="~/Content/assets/favicon.ico" />
-    <!-- Core theme CSS (includes Bootstrap)-->
-    <link href="~/Content/css/styles.css" rel="stylesheet" />
+
+    <!-- CSS Bundle Reference-->
+    @Styles.Render("~/Content/css")
+
 </head>
 <body>
     <!-- Responsive navbar-->
@@ -20,9 +22,32 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
                     <li class="nav-item"><a class="nav-link active" aria-current="page" href="@Url.Action("Index", "Home")">Home</a></li>
-                    <li class="nav-item"><a class="nav-link" href="@Url.Action("Login", "Account")">Login</a></li> <!--Will likely will remove this.-->
+                    <li class="nav-item"><a class="nav-link" href="@Url.Action("Login", "Account")">Login</a></li>
                     <li class="nav-item"><a class="nav-link" href="@Url.Action("Contact", "Home")">Contact</a></li>
                     @*<li class="nav-item"><a class="nav-link" href="@Url.Action()">Services</a></li>*@
+
+                    @if (Request.IsAuthenticated)
+                    {
+
+                        if (User.IsInRole("Admin"))
+                        {
+
+                        }
+                    }
+
+                    @if (User.IsInRole("Admin"))
+                    {
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Admin Functions</a>
+                            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <li><a class="dropdown-item" href="@Url.Action("Index", "UsersAdmin")">Users</a></li>
+                                <li><a class="dropdown-item" href="@Url.Action("Index", "RolesAdmin")">Roles</a></li>
+                            </ul>
+                        </li>
+                    }
+
+                    @Html.Partial("_LoginPartial")
+
                 </ul>
             </div>
         </div>
@@ -40,6 +65,7 @@
     <!-- Core theme JS-->
     <script src="~/Content/js/scripts.js"></script>
 
+    @Scripts.Render("~/bundles/js")
     @RenderSection("Scripts", required: false)
 
 </body>
