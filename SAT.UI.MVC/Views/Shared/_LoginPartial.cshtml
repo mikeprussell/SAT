@@ -4,15 +4,17 @@
 @if (Request.IsAuthenticated)
 {
 
-    <li class="nav-item">
+    <li class="nav-item mt-1">
         @Html.ActionLink("Hello " + User.Identity.GetUserName() + "!", "Index", "Manage", routeValues: null, htmlAttributes: new { @class = "nav-link" })
     </li>
     <li>
         @using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm", @class = "nav-link" }))
         {
             @Html.AntiForgeryToken()
-
-            <a href="javascript:document.getElementById('logoutForm').submit()">Log off</a>
+            
+            <a href="javascript:document.getElementById('logoutForm').submit()" type="button" class="btn btn-primary btn-sm">
+                <span class="glyphicon glyphicon-log-out"></span> Log out
+            </a>
         }
     </li>
 }
