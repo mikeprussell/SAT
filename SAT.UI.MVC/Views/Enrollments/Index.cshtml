@@ -5,10 +5,12 @@
 }
 
 <h2>Index</h2>
-
+@if (User.IsInRole("Admin") || User.IsInRole("Operations Employee"))
+{
 <p>
     @Html.ActionLink("Create New", "Create")
 </p>
+}
 <table class="table">
     <tr>
         <th>
@@ -23,7 +25,7 @@
         <th></th>
     </tr>
 
-@foreach (var item in Model) {
+    @foreach (var item in Model) {
     <tr>
         <td>
             @Html.DisplayFor(modelItem => item.EnrollmentDate)
@@ -35,9 +37,18 @@
             @Html.DisplayFor(modelItem => item.Student.FirstName)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.EnrollmentId }) |
+
+            @if (User.IsInRole("Admin") || User.IsInRole("Operations Employee"))
+            {
+            @Html.ActionLink("Edit", "Edit", new { id=item.EnrollmentId })
+            }|
+
             @Html.ActionLink("Details", "Details", new { id=item.EnrollmentId }) |
+
+            @if (User.IsInRole("Admin") || User.IsInRole("Operations Employee"))
+            {
             @Html.ActionLink("Delete", "Delete", new { id=item.EnrollmentId })
+            }
         </td>
     </tr>
 }

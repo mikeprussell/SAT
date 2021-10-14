@@ -1,0 +1,89 @@
+﻿@model IEnumerable<SAT.DATA.EF.Course>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<div class="mb-4">
+    <div class="container px-4 px-lg-5">
+        <div class="row gx-4 gx-lg-5 justify-content-center">
+            <div class="col-md py-2">
+                <h2 class="py-2">@ViewBag.Title</h2>
+                <hr />
+
+                @if (User.IsInRole("Admin") || User.IsInRole("Operations Employee"))
+                {
+                <p>
+                    @Html.ActionLink("Create New", "Create")
+                </p>
+                }
+
+                <p>  
+                    @Html.ActionLink("Index", "Courses", null, new { @class = "pull-right"}) 
+                </p>
+
+
+                <table class="table">
+                    <tr>
+                        <th>
+                            @Html.DisplayNameFor(model => model.CourseName)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.CourseDescription)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.CreditHours)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Curriculum)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Notes)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.IsActive)
+                        </th>
+                        <th></th>
+                    </tr>
+
+                    @foreach (var item in Model)
+                    {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.CourseName)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.CourseDescription)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.CreditHours)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Curriculum)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Notes)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.IsActive)
+                        </td>
+                        <td>
+                            @if (User.IsInRole("Admin"))
+                            {
+                            @Html.ActionLink("Edit", "Edit", new { id = item.CourseId })
+                            } |
+                            @Html.ActionLink("Details", "Details", new { id = item.CourseId }) |
+
+                            @if (User.IsInRole("Admin") || User.IsInRole("Operations Employee"))
+                            {
+                            @Html.ActionLink("Delete", "Delete", new { id = item.CourseId })
+                            }
+                        </td>
+                    </tr>
+                    }
+
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

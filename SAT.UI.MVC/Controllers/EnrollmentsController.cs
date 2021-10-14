@@ -10,6 +10,7 @@ using SAT.DATA.EF;
 
 namespace SAT.UI.MVC.Controllers
 {
+    [Authorize]
     public class EnrollmentsController : Controller
     {
         private SATEntities db = new SATEntities();
@@ -37,6 +38,7 @@ namespace SAT.UI.MVC.Controllers
         }
 
         // GET: Enrollments/Create
+        [Authorize(Roles = "Admin")]
         public ActionResult Create()
         {
             ViewBag.ScheduledClassId = new SelectList(db.ScheduledClasses, "ScheduledClassId", "InstructorName");
@@ -64,6 +66,7 @@ namespace SAT.UI.MVC.Controllers
         }
 
         // GET: Enrollments/Edit/5
+        [Authorize(Roles = "Admin")]
         public ActionResult Edit(int? id)
         {
             if (id == null)
@@ -99,6 +102,7 @@ namespace SAT.UI.MVC.Controllers
         }
 
         // GET: Enrollments/Delete/5
+        [Authorize(Roles = "Admin")]
         public ActionResult Delete(int? id)
         {
             if (id == null)

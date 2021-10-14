@@ -1,24 +1,62 @@
 ﻿@model IEnumerable<SAT.DATA.EF.Course>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Course";
 }
+
+
+
+
+
 
 <div class="mb-4">
     <div class="container px-4 px-lg-5">
         <div class="row gx-4 gx-lg-5 justify-content-center">
-            <div class="col-md py-2">
-                <h2 class="py-2">@ViewBag.Title</h2>
+            <div class="col-md py-2">            
                 <hr />
 
-                @if (User.IsInRole("Admin") || User.IsInRole("Operations Employee"))
+                @if (User.IsInRole("Admin"))
                 {
                     <p>
-                        @Html.ActionLink("Create New", "Create")
+                        <a class="btn btn-primary btn-sm" href="@Url.Action("Create", "Courses")">Create</a>
                     </p>
                 }
 
-                <table class="table">
+                @* @Html.ActionLink("Create New", "Create") *@
+
+
+                <p>
+                    @Html.ActionLink("Retired Courses", "Courses", null, new { @class = "btn-primary btn-sm pull-right" })
+                </p>
+                @foreach (var item in Model)
+                {
+
+                    <div class="row gx-4 gx-lg-5">
+                        <div class="col-md-4 mb-5">
+                            <div class="card h-100">
+                                <div class="card-body">
+                                    <h2 class="card-title">@item.CourseName</h2>
+                                    <h4>Credit Hour/s: @item.CreditHours</h4>
+                                    <p class="card-text"> @item.CourseDescription | @item.Curriculum </p>
+                                </div>
+                                <div class="card-footer">
+                                    @*<a class="btn btn-primary btn-sm" href="@Url.Action("Details", "Courses")">Details</a>*@
+                                    @Html.ActionLink("Details", "Details", new { id = item.CourseId }, new { @class = "btn btn-primary btn-sm" })
+
+                                    @if (User.IsInRole("Admin"))
+                                    {
+                                        @Html.ActionLink("Edit", "Edit", new { id = item.CourseId }, new { @class = "btn btn-primary btn-sm" })
+
+                                        @Html.ActionLink("Delete", "Delete", new { id = item.CourseId }, new { @class = "btn btn-primary btn-sm" })
+                                    }
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                }
+
+                @*<table class="table">
                     <tr>
                         <th>
                             @Html.DisplayNameFor(model => model.CourseName)
@@ -63,14 +101,21 @@
                                 @Html.DisplayFor(modelItem => item.IsActive)
                             </td>
                             <td>
-                                @Html.ActionLink("Edit", "Edit", new { id = item.CourseId }) |
+                                @if (User.IsInRole("Admin"))
+                                {
+                                    @Html.ActionLink("Edit", "Edit", new { id = item.CourseId })
+                                } |
                                 @Html.ActionLink("Details", "Details", new { id = item.CourseId }) |
-                                @Html.ActionLink("Delete", "Delete", new { id = item.CourseId })
+
+                                @if (User.IsInRole("Admin"))
+                                {
+                                    @Html.ActionLink("Delete", "Delete", new { id = item.CourseId })
+                                }
                             </td>
                         </tr>
                     }
 
-                </table>
+                </table>*@
             </div>
         </div>
     </div>
