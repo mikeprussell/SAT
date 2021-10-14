@@ -28,7 +28,7 @@ namespace SAT.DATA.EF
         public string Location { get; set; }
         public Nullable<int> SCSID { get; set; }
     
-        public virtual Course Course { get; set; }
+        public virtual Course Cours { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Enrollment> Enrollments { get; set; }
         public virtual ScheduledClassStatus ScheduledClassStatus { get; set; }

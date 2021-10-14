@@ -6,9 +6,12 @@
 
 <h2>Index</h2>
 
+@if (UserIsInRole("Admin") || User.IsInRole("Operations Employee"))
+{
 <p>
     @Html.ActionLink("Create New", "Create")
 </p>
+}
 <table class="table">
     <tr>
         <th>
@@ -32,7 +35,7 @@
         <th></th>
     </tr>
 
-@foreach (var item in Model) {
+    @foreach (var item in Model) {
     <tr>
         <td>
             @Html.DisplayFor(modelItem => item.StartDate)
@@ -53,9 +56,18 @@
             @Html.DisplayFor(modelItem => item.ScheduledClassStatus.SCSName)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.ScheduledClassId }) |
-            @Html.ActionLink("Details", "Details", new { id=item.ScheduledClassId }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.ScheduledClassId })
+
+            @if (UserIsInRole("Admin") || User.IsInRole("Operations Employee"))
+            {
+                @Html.ActionLink("Edit", "Edit", new { id=item.ScheduledClassId })
+            }|
+
+                @Html.ActionLink("Details", "Details", new { id=item.ScheduledClassId }) |
+
+            @if (UserIsInRole("Admin") || User.IsInRole("Operations Employee"))
+            {
+                @Html.ActionLink("Delete", "Delete", new { id=item.ScheduledClassId })
+            }
         </td>
     </tr>
 }

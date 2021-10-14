@@ -1,0 +1,8 @@
+﻿
+/*Reference 7749 in styles.css*/
+#layoutBanner .text-white {
+    /*Needs consistent font-family and font-size*/
+    --bs-text-opacity: 1;
+    color: rgba(var(--bs-white-rgb), var(--bs-text-opacity)) !important;
+    font-size: 200%;
+}

@@ -10,6 +10,7 @@ using SAT.DATA.EF;
 
 namespace SAT.UI.MVC.Controllers
 {
+    [Authorize]
     public class ScheduledClassesController : Controller
     {
         private SATEntities db = new SATEntities();
@@ -17,7 +18,7 @@ namespace SAT.UI.MVC.Controllers
         // GET: ScheduledClasses
         public ActionResult Index()
         {
-            var scheduledClasses = db.ScheduledClasses.Include(s => s.Course).Include(s => s.ScheduledClassStatus);
+            var scheduledClasses = db.ScheduledClasses.Include(s => s.CourseId).Include(s => s.ScheduledClassStatus);
             return View(scheduledClasses.ToList());
         }
 
@@ -99,6 +100,7 @@ namespace SAT.UI.MVC.Controllers
         }
 
         // GET: ScheduledClasses/Delete/5
+        [Authorize(Roles = "Admin")]
         public ActionResult Delete(int? id)
         {
             if (id == null)
