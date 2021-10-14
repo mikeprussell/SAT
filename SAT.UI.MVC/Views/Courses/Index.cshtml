@@ -1,122 +1,40 @@
 ﻿@model IEnumerable<SAT.DATA.EF.Course>
 
 @{
-    ViewBag.Title = "Course";
+    ViewBag.Title = "Courses";
 }
 
-
-
-
-
-
-<div class="mb-4">
-    <div class="container px-4 px-lg-5">
-        <div class="row gx-4 gx-lg-5 justify-content-center">
-            <div class="col-md py-2">            
-                <hr />
-
-                @if (User.IsInRole("Admin"))
-                {
-                    <p>
-                        <a class="btn btn-primary btn-sm" href="@Url.Action("Create", "Courses")">Create</a>
-                    </p>
-                }
-
-                @* @Html.ActionLink("Create New", "Create") *@
-
-
+<section>
+    <div class="container px-4 px-lg-5 mt-5">
+            @if (User.IsInRole("Admin") || User.IsInRole("Operations Employee"))
+            {
                 <p>
-                    @Html.ActionLink("Retired Courses", "Courses", null, new { @class = "btn-primary btn-sm pull-right" })
+                    @Html.ActionLink("Create New", "Create", null, new { @class = "btn btn-primary mb-2" })
                 </p>
-                @foreach (var item in Model)
-                {
+            }
+        <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
+            @foreach (var item in Model)
+            {
+                <div class="col mb-5">
+                    <div class="card h-100">
+                        <img src="~/Content/img/studentimages/p_@item.CoursePhoto" alt="@item.CourseName" />
+                        <h2 class="card-title">@item.CourseName</h2>
+                        <h4>Credit Hours: @item.CreditHours</h4>
+                        <p class="card-text"> Description: @item.CourseDescription</p>
+                        <div class="card-footer">
+                            @Html.ActionLink("Details", "Details", new { id = item.CourseId }, new { @class = "btn btn-primary btn-sm mx-0.5" })
 
-                    <div class="row gx-4 gx-lg-5">
-                        <div class="col-md-4 mb-5">
-                            <div class="card h-100">
-                                <div class="card-body">
-                                    <h2 class="card-title">@item.CourseName</h2>
-                                    <h4>Credit Hour/s: @item.CreditHours</h4>
-                                    <p class="card-text"> @item.CourseDescription | @item.Curriculum </p>
-                                </div>
-                                <div class="card-footer">
-                                    @*<a class="btn btn-primary btn-sm" href="@Url.Action("Details", "Courses")">Details</a>*@
-                                    @Html.ActionLink("Details", "Details", new { id = item.CourseId }, new { @class = "btn btn-primary btn-sm" })
+                            @if (User.IsInRole("Admin"))
+                            {
+                                @*@Html.ActionLink("Edit", "Edit", new { id = item.CourseId }, new { @class = "btn btn-warning btn-sm mx-1" })*@
 
-                                    @if (User.IsInRole("Admin"))
-                                    {
-                                        @Html.ActionLink("Edit", "Edit", new { id = item.CourseId }, new { @class = "btn btn-primary btn-sm" })
+                                @Html.ActionLink("Delete", "Delete", new { id = item.CourseId }, new { @class = "btn btn-danger btn-sm float-end" })
+                            }
 
-                                        @Html.ActionLink("Delete", "Delete", new { id = item.CourseId }, new { @class = "btn btn-primary btn-sm" })
-                                    }
-
-                                </div>
-                            </div>
                         </div>
                     </div>
-                }
-
-                @*<table class="table">
-                    <tr>
-                        <th>
-                            @Html.DisplayNameFor(model => model.CourseName)
-                        </th>
-                        <th>
-                            @Html.DisplayNameFor(model => model.CourseDescription)
-                        </th>
-                        <th>
-                            @Html.DisplayNameFor(model => model.CreditHours)
-                        </th>
-                        <th>
-                            @Html.DisplayNameFor(model => model.Curriculum)
-                        </th>
-                        <th>
-                            @Html.DisplayNameFor(model => model.Notes)
-                        </th>
-                        <th>
-                            @Html.DisplayNameFor(model => model.IsActive)
-                        </th>
-                        <th></th>
-                    </tr>
-
-                    @foreach (var item in Model)
-                    {
-                        <tr>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.CourseName)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.CourseDescription)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.CreditHours)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.Curriculum)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.Notes)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.IsActive)
-                            </td>
-                            <td>
-                                @if (User.IsInRole("Admin"))
-                                {
-                                    @Html.ActionLink("Edit", "Edit", new { id = item.CourseId })
-                                } |
-                                @Html.ActionLink("Details", "Details", new { id = item.CourseId }) |
-
-                                @if (User.IsInRole("Admin"))
-                                {
-                                    @Html.ActionLink("Delete", "Delete", new { id = item.CourseId })
-                                }
-                            </td>
-                        </tr>
-                    }
-
-                </table>*@
-            </div>
+                </div>
+            }
         </div>
     </div>
-</div>
+</section>
