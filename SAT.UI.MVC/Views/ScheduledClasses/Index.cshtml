@@ -6,7 +6,7 @@
 
 <h2>Index</h2>
 
-@if (UserIsInRole("Admin") || User.IsInRole("Operations Employee"))
+@if (User.IsInRole("Admin") || User.IsInRole("Operations Employee"))
 {
 <p>
     @Html.ActionLink("Create New", "Create")
@@ -57,14 +57,14 @@
         </td>
         <td>
 
-            @if (UserIsInRole("Admin") || User.IsInRole("Operations Employee"))
+            @if (User.IsInRole("Admin") || User.IsInRole("Operations Employee"))
             {
                 @Html.ActionLink("Edit", "Edit", new { id=item.ScheduledClassId })
             }|
 
                 @Html.ActionLink("Details", "Details", new { id=item.ScheduledClassId }) |
 
-            @if (UserIsInRole("Admin") || User.IsInRole("Operations Employee"))
+            @if (User.IsInRole("Admin") || User.IsInRole("Operations Employee"))
             {
                 @Html.ActionLink("Delete", "Delete", new { id=item.ScheduledClassId })
             }

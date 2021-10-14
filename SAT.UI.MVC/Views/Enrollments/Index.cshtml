@@ -1,14 +1,13 @@
 ﻿@model IEnumerable<SAT.DATA.EF.Enrollment>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Enrollment";
 }
 
-<h2>Index</h2>
 @if (User.IsInRole("Admin") || User.IsInRole("Operations Employee"))
 {
 <p>
-    @Html.ActionLink("Create New", "Create")
+    <a class="btn btn-primary btn-sm" href="@Url.Action("Create", "Enrollments")">Enroll New Student</a>
 </p>
 }
 <table class="table">
@@ -40,14 +39,14 @@
 
             @if (User.IsInRole("Admin") || User.IsInRole("Operations Employee"))
             {
-            @Html.ActionLink("Edit", "Edit", new { id=item.EnrollmentId })
+            @Html.ActionLink("Edit", "Edit", new { id=item.EnrollmentId }, new { @class = "btn btn-primary btn-sm" })
             }|
 
-            @Html.ActionLink("Details", "Details", new { id=item.EnrollmentId }) |
+            @Html.ActionLink("Details", "Details", new { id=item.EnrollmentId }, new { @class = "btn btn-primary btn-sm" }) |
 
             @if (User.IsInRole("Admin") || User.IsInRole("Operations Employee"))
             {
-            @Html.ActionLink("Delete", "Delete", new { id=item.EnrollmentId })
+            @Html.ActionLink("Delete", "Delete", new { id=item.EnrollmentId }, new { @class = "btn btn-primary btn-sm" })
             }
         </td>
     </tr>

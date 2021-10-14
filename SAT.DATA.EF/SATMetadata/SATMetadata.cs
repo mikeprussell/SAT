@@ -34,13 +34,16 @@ namespace SAT.DATA.EF//SATMetadata
         [Display(Name = "Notes")]
         public string Notes { get; set; }
 
+        public string CoursePhoto { get; set; }
+
         public Nullable<bool> IsActive { get; set; }
+       
+    }
 
-        [MetadataType(typeof(CourseMetadata))]
-        public partial class Course
-        {
+    [MetadataType(typeof(CourseMetadata))]
+    public partial class Course
+    {
 
-        }
     }
 
     public class EnrollmentMetadata
@@ -66,11 +69,13 @@ namespace SAT.DATA.EF//SATMetadata
 
         public virtual Student Student { get; set; }
 
-        [MetadataType(typeof(EnrollmentMetadata))]
-        public partial class Enrollment
-        {
+      
+    }
 
-        }
+    [MetadataType(typeof(EnrollmentMetadata))]
+    public partial class Enrollment
+    {
+
     }
 
     public class ScheduledClassMetadata
@@ -103,11 +108,12 @@ namespace SAT.DATA.EF//SATMetadata
         [Display(Name = "Scheduled Class Status ID")]
         public Nullable<int> SCSID { get; set; }
 
-        [MetadataType(typeof(ScheduledClassMetadata))]
-        public partial class ScheduledClass
-        {
+       
+    }
+    [MetadataType(typeof(ScheduledClassMetadata))]
+    public partial class ScheduledClass
+    {
 
-        }
     }
 
     public class ScheduledClassStatusMetadata
@@ -121,11 +127,12 @@ namespace SAT.DATA.EF//SATMetadata
         [Display(Name = "Scheduled Class Status Name")]
         public string SCSName { get; set; }
 
-        [MetadataType(typeof(ScheduledClassStatusMetadata))]
-        public partial class ScheduledClassStatus
-        {
+       
+    }
+    [MetadataType(typeof(ScheduledClassStatusMetadata))]
+    public partial class ScheduledClassStatus
+    {
 
-        }
     }
 
     public class StudentMetadata
@@ -174,11 +181,12 @@ namespace SAT.DATA.EF//SATMetadata
         [Required(ErrorMessage = "*Student Status ID is required")]
         public int SSID { get; set; }
 
-        [MetadataType(typeof(StudentMetadata))]
-        public partial class Student
-        {
+        
+    }
+    [MetadataType(typeof(StudentMetadata))]
+    public partial class Student
+    {
 
-        }
     }
 
     public class StudentStatusMetadata
@@ -195,11 +203,12 @@ namespace SAT.DATA.EF//SATMetadata
         [StringLength(250, ErrorMessage = "*Cannot exceed 250 characters")]
         public string SSDescription { get; set; }
 
-        [MetadataType(typeof(ScheduledClassStatusMetadata))]
-        public partial class ScheduledClassStatusMetadata
-        {
+     
+    }
+    [MetadataType(typeof(StudentStatusMetadata))]
+    public partial class StudentStatus
+    {
 
-        }
     }
 
 }
