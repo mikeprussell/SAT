@@ -4,11 +4,61 @@
     ViewBag.Title = "Log in";
 }
 
-<h2>@ViewBag.Title.</h2>
+@using (Html.BeginForm("Login", "Account", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post))
+{
+    @Html.AntiForgeryToken()
+
+    <div class="mb-4">
+        <div class="container px-4 px-lg-5">
+            <div class="row gx-4 gx-lg-5 justify-content-center">
+                <div class="col-md-10 col-lg-8 col-xl-7">
+                    <br />
+                    <h2>@ViewBag.Title</h2>
+                    <br />
+                    <h4>Use a local account to log in</h4>
+                    <hr>
+                    <div class="by-5">
+                        @Html.ValidationSummary("", new { @class = "text-danger" })
+                        <form id="contactForm">
+                            <div class="form-floating">
+                                @Html.EditorFor(m => m.Email, new { htmlAttributes = new { @class = "form-control", @id = "email", placeholder = "Email" } })
+                                <label for="email">Email</label>
+                                <br />
+                            </div>
+                            <div class="form-floating">
+                                @Html.EditorFor(m => m.Password, new { htmlAttributes = new { @class = "form-control", @id = "password", placeholder = "Password" } })
+                                <label for="password">Password</label>
+                                <br />
+                            </div>
+                            <div class="checkbox">
+                                @Html.CheckBoxFor(m => m.RememberMe)
+                                @Html.LabelFor(m => m.RememberMe)
+                            </div>
+                            <br />
+
+                            <!-- Submit Button-->
+                            <button type="submit" value="Submit" class="btn btn-primary" id="submitButton">Log in</button>
+                            <br />
+                            <br />
+                            <div>
+                                @Html.ActionLink("Register a new user?", "Register")
+                                |
+                                @Html.ActionLink("Forget your password?", "ForgotPassword")
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+
+@*<h2>@ViewBag.Title.</h2>
 <div class="row">
     <div class="col-md-8">
         <section id="loginForm">
-            @using (Html.BeginForm("Login", "Account", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "form-horizontal", role = "form" })) {
+            @using (Html.BeginForm("Login", "Account", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+            {
                 @Html.AntiForgeryToken()
                 <h4>Use a local account to log in.</h4>
                 <hr />
@@ -57,4 +107,4 @@
 </div>
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
-}
+}*@
