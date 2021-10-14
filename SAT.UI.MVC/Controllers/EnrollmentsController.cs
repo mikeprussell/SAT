@@ -41,8 +41,11 @@ namespace SAT.UI.MVC.Controllers
         [Authorize(Roles = "Admin")]
         public ActionResult Create()
         {
+            // ViewBag.ScheduledClassId = new SelectList(db.ScheduledClasses, "ScheduledClassId", "CourseId", "CourseName");
             ViewBag.ScheduledClassId = new SelectList(db.ScheduledClasses, "ScheduledClassId", "InstructorName");
-            ViewBag.StudentId = new SelectList(db.Students, "StudentId", "FirstName");
+            ViewBag.StudentId = new SelectList(db.Students, "StudentId", "FirstName", "LastName");
+            // TODO: Linke CourseName instead of InstructorName
+                    
             return View();
         }
 
@@ -59,7 +62,7 @@ namespace SAT.UI.MVC.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-
+           // ViewBag.ScheduledClassId = new SelectList(db.ScheduledClasses, "ScheduledClassId", "CourseId", "CourseName", enrollment.ScheduledClassId);
             ViewBag.ScheduledClassId = new SelectList(db.ScheduledClasses, "ScheduledClassId", "InstructorName", enrollment.ScheduledClassId);
             ViewBag.StudentId = new SelectList(db.Students, "StudentId", "FirstName", enrollment.StudentId);
             return View(enrollment);

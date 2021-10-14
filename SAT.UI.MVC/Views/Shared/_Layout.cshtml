@@ -75,6 +75,19 @@
         <!-- Core theme JS-->
         <script src="~/Content/js/scripts.js"></script>
 
+        @* Added of DatePicker add-on *@
+        <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+        <script src="https://code.jquery.com/ui/1.13.0/jquery-ui.js"></script>
+
+  <script>
+  $( function() {
+    $( "#datepicker" ).datepicker({
+      showButtonPanel: true
+    });
+  } );
+  </script>
+
+
         @Scripts.Render("~/bundles/js")
         @RenderSection("Scripts", required: false)
 

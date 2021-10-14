@@ -1,21 +1,57 @@
 ﻿@model SAT.DATA.EF.Enrollment
 
 @{
-    ViewBag.Title = "Create";
+    ViewBag.Title = "Enroll New Student";
 }
 
-<h2>Create</h2>
 
 
-@using (Html.BeginForm()) 
+
+@using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
+
+
     
-    <div class="form-horizontal">
-        <h4>Enrollment</h4>
-        <hr />
-        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-        <div class="form-group">
+
+    <div class="justify-content-center">
+        <div class="form-horizontal">
+
+            <hr />
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+            <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                    <span class="input-group-text" id="inputGroup-sizing-default">Student</span>
+                </div>
+                @Html.DropDownList("StudentId", null, htmlAttributes: new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.StudentId, "", new { @class = "text-danger" })
+            </div>
+            <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                    <span class="input-group-text" id="inputGroup-sizing-default">Instructor</span>
+                </div>
+                @Html.DropDownList("ScheduledClassId", null, htmlAttributes: new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.ScheduledClassId, "", new { @class = "text-danger" })
+            </div>
+            <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                    <span class="input-group-text" id="inputGroup-sizing-default">Enrollment Date</span>               
+                </div>
+                @Html.EditorFor(model => model.EnrollmentDate, new { htmlAttributes = new { @class = "form-control input-group-text" } })
+                @Html.ValidationMessageFor(model => model.EnrollmentDate, "", new { @class = "text-danger" })
+            </div>
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <input class="btn btn-info " type="submit" value="Create" />
+                    <a class="btn btn-info" target="__blank" href="@Url.Action("Index","Enrollments")">Back</a>
+                </div>
+            </div>
+
+
+
+
+            @*<div class="form-group">
             @Html.LabelFor(model => model.StudentId, "StudentId", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.DropDownList("StudentId", null, htmlAttributes: new { @class = "form-control" })
@@ -38,18 +74,22 @@
                 @Html.ValidationMessageFor(model => model.EnrollmentDate, "", new { @class = "text-danger" })
             </div>
         </div>
-
+        <hr>
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Create" class="btn btn-default" />
+                <input class="btn btn-info " type="submit" value="Create" />
+                <a class="btn btn-info" target="__blank" href="@Url.Action("Index","Enrollments")">Back</a>
             </div>
+        </div>*@
+            <hr>
         </div>
     </div>
+
 }
 
-<div>
-    @Html.ActionLink("Back to List", "Index")
-</div>
+@*<div>
+        @Html.ActionLink("Back to List", "Index")
+    </div>*@
 
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
