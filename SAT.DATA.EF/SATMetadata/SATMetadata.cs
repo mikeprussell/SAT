@@ -34,6 +34,8 @@ namespace SAT.DATA.EF//SATMetadata
         [Display(Name = "Notes")]
         public string Notes { get; set; }
 
+        public string CoursePhoto { get; set; }
+
         public Nullable<bool> IsActive { get; set; }
 
         [MetadataType(typeof(CourseMetadata))]
