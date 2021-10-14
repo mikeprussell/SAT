@@ -22,6 +22,13 @@ namespace SAT.UI.MVC.Controllers
         {
             return View(db.Courses.ToList());
         }
+        
+
+        // GET: Courses
+        public ActionResult ListView()
+        {
+            return View(db.Courses.ToList());
+        }
 
         // GET: Courses/Details/5
         public ActionResult Details(int? id)
