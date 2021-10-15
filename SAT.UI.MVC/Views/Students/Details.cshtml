@@ -94,8 +94,13 @@
             <hr>
             <div class="form-group mt-4 mb-2">
                 <div class="col-md-offset-2 col-md-12">
-                    <!-- Delete Button-->
-                    @Html.ActionLink("Edit", "Edit", new { id = Model.StudentId }, new { @class = "btn btn-warning" })
+                    <!-- Edit Button-->
+                    @if (User.IsInRole("Admin"))
+                    {
+                        @Html.ActionLink("Edit", "Edit", new { id = Model.StudentId }, new { @class = "btn btn-warning" })
+
+                    }
+
                     @Html.ActionLink("Back", "Index", null, new { @class = "btn btn-primary float-end" })
                 </div>
             </div>

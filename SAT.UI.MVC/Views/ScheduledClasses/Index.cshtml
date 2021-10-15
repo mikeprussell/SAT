@@ -61,10 +61,11 @@
                 @*@Html.ActionLink("Edit", "Edit", new { id=item.ScheduledClassId }, new { @class = "btn btn-warning btn-sm" })*@
             }
 
-                @Html.ActionLink("Details", "Details", new { id=item.ScheduledClassId }, new { @class = "btn btn-primary btn-sm" }) |
+                @Html.ActionLink("Details", "Details", new { id=item.ScheduledClassId }, new { @class = "btn btn-primary btn-sm" }) 
 
-            @if (User.IsInRole("Admin") || User.IsInRole("Scheduling"))
+            @if (User.IsInRole("Admin"))
             {
+                
                 @Html.ActionLink("Delete", "Delete", new { id=item.ScheduledClassId }, new { @class = "btn btn-danger btn-sm" })
             }
         </td>

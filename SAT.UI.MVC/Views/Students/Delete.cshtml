@@ -91,14 +91,18 @@
                 </div>
             </div>
             <hr>
-            <div class="form-group mt-4 mb-2">
-                <div class="col-md-offset-2 col-md-12">
-                    <!-- Delete Button-->
-                    <input type="submit" value="Delete" class="btn btn-danger" />
-                    @*@Html.ActionLink("Edit", "Edit", new { id = Model.StudentId }, new { @class = "btn btn-warning" })*@
-                    @Html.ActionLink("Back", "Index", null, new { @class = "btn btn-primary float-end" })
+            @using (Html.BeginForm())
+            {
+                @Html.AntiForgeryToken()
+                <div class="form-group mt-4 mb-2">
+                    <div class="col-md-offset-2 col-md-12">
+                        <!-- Delete Button-->
+                        <input type="submit" value="Delete" class="btn btn-danger" />
+                        @*@Html.ActionLink("Edit", "Edit", new { id = Model.StudentId }, new { @class = "btn btn-warning" })*@
+                        @Html.ActionLink("Back", "Index", null, new { @class = "btn btn-primary float-end" })
+                    </div>
                 </div>
+            }
             </div>
-        </div>
     </div>
 </div>

@@ -9,7 +9,7 @@
         <div class="row gx-4 gx-lg-5 justify-content-center">
             <div class="col-md-12 col-lg-10 col-xl-9">
 
-                @using (Html.BeginForm("Create", "Courses", FormMethod.Post, new { @enctype = "multipart/form-data" }))
+                @using (Html.BeginForm("Edit", "Courses", FormMethod.Post, new { @enctype = "multipart/form-data" }))
                 {
                     @Html.AntiForgeryToken()
 
@@ -78,8 +78,8 @@
                         <div class="form-group my-4">
                             <div class="col-md-offset-2 col-md-12">
                                 <!-- Edit Button-->
-                                <button type="submit" value="Edit" class="btn btn-success" id="createButton">Save</button>
-                                @Html.ActionLink("Cancel", "Index", null, new { @class = "btn btn-primary float-end" })
+                                <input type="submit" value="Save" class="btn btn-success" /> 
+                                @Html.ActionLink("Back", "Index", null, new { @class = "btn btn-primary float-end" })
                             </div>
                         </div>
                     </div>

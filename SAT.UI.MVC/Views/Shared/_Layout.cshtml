@@ -33,7 +33,10 @@
                         <li class="nav-item dropdown mt-1">
                             <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Scheduling</a>
                             <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                @if (User.IsInRole("Admin"))
+                                {
                                 <li><a class="dropdown-item" href="@Url.Action("Index", "Courses")">Courses</a></li>
+                                }
                                 <li><a class="dropdown-item" href="@Url.Action("Index", "Enrollments")">Enrollments</a></li>
                                 <li><a class="dropdown-item" href="@Url.Action("Index", "ScheduledClasses")">Scheduled Classes</a></li>
                                 <li><a class="dropdown-item" href="@Url.Action("Index", "Students")">Students</a></li>
