@@ -50,9 +50,9 @@ namespace SAT.UI.MVC.Controllers
         public ActionResult Create()
         {
             // ViewBag.ScheduledClassId = new SelectList(db.ScheduledClasses, "ScheduledClassId", "CourseId", "CourseName");
-            ViewBag.ScheduledClassId = new SelectList(db.ScheduledClasses, "ScheduledClassId", "InstructorName");
-            ViewBag.StudentId = new SelectList(db.Students, "StudentId", "FirstName", "LastName");
-            // TODO: Linke CourseName instead of InstructorName
+            ViewBag.ScheduledClassId = new SelectList(db.ScheduledClasses.Where (x => x.SCSID == 1), "ScheduledClassId", "ScheduledClassSummary");
+            ViewBag.StudentId = new SelectList(db.Students, "StudentId", "FullName");
+            // TODO: Link CourseName instead of CourseId
                     
             return View();
         }
@@ -72,7 +72,7 @@ namespace SAT.UI.MVC.Controllers
             }
            // ViewBag.ScheduledClassId = new SelectList(db.ScheduledClasses, "ScheduledClassId", "CourseId", "CourseName", enrollment.ScheduledClassId);
             ViewBag.ScheduledClassId = new SelectList(db.ScheduledClasses, "ScheduledClassId", "InstructorName", enrollment.ScheduledClassId);
-            ViewBag.StudentId = new SelectList(db.Students, "StudentId", "FirstName", enrollment.StudentId);
+            ViewBag.StudentId = new SelectList(db.Students, "StudentId", "FullName", enrollment.StudentId);
             return View(enrollment);
         }
 
@@ -89,8 +89,8 @@ namespace SAT.UI.MVC.Controllers
             {
                 return HttpNotFound();
             }
-            ViewBag.ScheduledClassId = new SelectList(db.ScheduledClasses, "ScheduledClassId", "InstructorName", enrollment.ScheduledClassId);
-            ViewBag.StudentId = new SelectList(db.Students, "StudentId", "FirstName", enrollment.StudentId);
+            ViewBag.ScheduledClassId = new SelectList(db.ScheduledClasses.Where(x => x.SCSID == 1), "ScheduledClassId", "InstructorName", enrollment.ScheduledClassId);
+            ViewBag.StudentId = new SelectList(db.Students, "StudentId", "FullName", enrollment.StudentId);
             return View(enrollment);
         }
 
@@ -108,7 +108,7 @@ namespace SAT.UI.MVC.Controllers
                 return RedirectToAction("Index");
             }
             ViewBag.ScheduledClassId = new SelectList(db.ScheduledClasses, "ScheduledClassId", "InstructorName", enrollment.ScheduledClassId);
-            ViewBag.StudentId = new SelectList(db.Students, "StudentId", "FirstName", enrollment.StudentId);
+            ViewBag.StudentId = new SelectList(db.Students, "StudentId", "FullName", enrollment.StudentId);
             return View(enrollment);
         }
 

@@ -113,7 +113,10 @@ namespace SAT.DATA.EF//SATMetadata
     [MetadataType(typeof(ScheduledClassMetadata))]
     public partial class ScheduledClass
     {
-
+        public string ScheduledClassSummary
+        {
+            get { return $"{StartDate:d} - {Course.CourseName} - {Location}"; }
+        }
     }
 
     public class ScheduledClassStatusMetadata
@@ -186,10 +189,13 @@ namespace SAT.DATA.EF//SATMetadata
     [MetadataType(typeof(StudentMetadata))]
     public partial class Student
     {
+        public string FullName
+        {
+            get { return  $"{FirstName} {LastName}"; }
+        }
+    }   
 
-    }
-
-    public class StudentStatusMetadata
+        public class StudentStatusMetadata
     {
         [Display(Name = "Student Status ID")]
         [Required(ErrorMessage = "*Student Status ID is required")]
