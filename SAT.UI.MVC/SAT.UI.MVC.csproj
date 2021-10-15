@@ -319,11 +319,13 @@
     <Content Include="Views\StudentStatus\Edit.cshtml" />
     <Content Include="Views\StudentStatus\Index.cshtml" />
     <Content Include="Views\Courses\RetiredIndex.cshtml" />
+    <Content Include="Views\Courses\ListView2.cshtml" />
     <Content Include="Views\Courses\ListView.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="bin\roslyn\" />
+    <Folder Include="Content\img\courseimages\" />
     <Folder Include="obj\Debug\TempPE\" />
   </ItemGroup>
   <ItemGroup>
