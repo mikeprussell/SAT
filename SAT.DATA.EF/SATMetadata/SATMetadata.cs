@@ -195,8 +195,8 @@ namespace SAT.DATA.EF//SATMetadata
         [Required(ErrorMessage = "*Student Status ID is required")]
         public int SSID { get; set; }
 
-        [Display(Name = "Student Status Name")]
-        [Required(ErrorMessage = "*Student Status Name is required")]
+        [Display(Name = "Student Status")]
+        [Required(ErrorMessage = "*Student Status is required")]
         public string SSName { get; set; }
 
         [Display(Name = "Student Status Description")]

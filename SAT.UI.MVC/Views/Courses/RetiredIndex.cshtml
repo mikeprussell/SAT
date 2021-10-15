@@ -11,7 +11,7 @@
                 <h2 class="py-2">@ViewBag.Title</h2>
                 <hr />
 
-                @if (User.IsInRole("Admin") || User.IsInRole("Operations Employee"))
+                @if (User.IsInRole("Admin"))
                 {
                 <p>
                     @Html.ActionLink("Create New", "Create")
