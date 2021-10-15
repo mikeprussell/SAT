@@ -36,7 +36,7 @@ namespace SAT.DATA.EF//SATMetadata
 
         public string CoursePhoto { get; set; }
 
-        public Nullable<bool> IsActive { get; set; }
+        public bool IsActive { get; set; }
        
     }
 
@@ -122,9 +122,9 @@ namespace SAT.DATA.EF//SATMetadata
         [Display(Name = "Scheduled Class Status ID")]
         public int SCSID { get; set; }
 
-        [Required(ErrorMessage = "*Scheduled Class Status Name is required")]
+        [Required(ErrorMessage = "*Status Name is required")]
         [StringLength(50, ErrorMessage = "*Cannot exceed 50 characters")]
-        [Display(Name = "Scheduled Class Status Name")]
+        [Display(Name = "Status Name")]
         public string SCSName { get; set; }
 
        

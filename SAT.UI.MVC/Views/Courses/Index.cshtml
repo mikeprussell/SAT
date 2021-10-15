@@ -6,12 +6,20 @@
 
 <section>
     <div class="container px-4 px-lg-5 mt-5">
-        @if (User.IsInRole("Admin"))
-        {
-            @Html.ActionLink("Create New", "Create", null, new { @class = "btn btn-primary mb-4" })
-        }
-            @Html.ActionLink("List View", "ListView", null, new { @class = "btn btn-info mb-4 float-end" })
+        <div>
+            @if (User.IsInRole("Admin"))
+            {
+                @Html.ActionLink("Create New", "Create", null, new { @class = "btn btn-primary mb-4" })
+            }
 
+            <span class="float-end">
+                @Html.ActionLink("Active Courses", "ActiveInactiveCourses", "Courses", new { isActiveFilter = true }, new { @class = "btn btn-dark mb-4" })
+
+                @Html.ActionLink("Inactive Courses", "ActiveInactiveCourses", "Courses", new { isActiveFilter = false }, new { @class = "btn btn-dark mb-4" })
+
+                @Html.ActionLink("List View", "ListView", null, new { @class = "btn btn-info mb-4" })
+            </span>
+        </div>
         <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
             @foreach (var item in Model)
             {
@@ -20,6 +28,7 @@
                         <img src="~/Content/img/studentimages/p_@item.CoursePhoto" alt="@item.CourseName" />
                         <h2 class="card-title">@item.CourseName</h2>
                         <h4>Credit Hours: @item.CreditHours</h4>
+                        <h4>Active: @item.IsActive</h4>
                         <p class="card-text"> Description: @item.CourseDescription</p>
                         <div class="card-footer">
                             @Html.ActionLink("Details", "Details", new { id = item.CourseId }, new { @class = "btn btn-primary btn-sm mx-0.5" })

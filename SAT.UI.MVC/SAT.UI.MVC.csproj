@@ -319,10 +319,10 @@
     <Content Include="Views\StudentStatus\Details.cshtml" />
     <Content Include="Views\StudentStatus\Edit.cshtml" />
     <Content Include="Views\StudentStatus\Index.cshtml" />
-    <Content Include="Views\Courses\RetiredIndex.cshtml" />
     <Content Include="Views\Courses\ListView.cshtml" />
     <Content Include="Views\Enrollments\ListView.cshtml" />
     <Content Include="Views\Students\ListView.cshtml" />
+    <Content Include="Views\Courses\ActiveInactiveCourses.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -117,14 +117,14 @@
             </td>
             <td>
 
-                @if (User.IsInRole("Admin") || User.IsInRole("Operations Employee"))
+                @if (User.IsInRole("Admin") || User.IsInRole("Scheduling"))
                 {
                     @Html.ActionLink("Edit", "Edit", new { id = item.StudentId })
                 }
 
                 @Html.ActionLink("Details", "Details", new { id = item.StudentId })
 
-                @if (User.IsInRole("Admin") || User.IsInRole("Operations Employee"))
+                @if (User.IsInRole("Admin") || User.IsInRole("Scheduling"))
                 {
                     @Html.ActionLink("Delete", "Delete", new { id = item.StudentId })
                 }

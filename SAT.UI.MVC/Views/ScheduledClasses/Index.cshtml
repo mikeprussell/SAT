@@ -5,7 +5,7 @@
 }
 
 
-@if (User.IsInRole("Admin") || User.IsInRole("Operations Employee"))
+@if (User.IsInRole("Admin") || User.IsInRole("Scheduling"))
 {
 <p>
     <a class="btn btn-primary btn-sm" href="@Url.Action("Create", "ScheduledClasses")">Create</a>
@@ -56,14 +56,14 @@
         </td>
         <td>
 
-            @if (User.IsInRole("Admin") || User.IsInRole("Operations Employee"))
+            @if (User.IsInRole("Admin") || User.IsInRole("Scheduling"))
             {
                 @*@Html.ActionLink("Edit", "Edit", new { id=item.ScheduledClassId }, new { @class = "btn btn-warning btn-sm" })*@
             }
 
                 @Html.ActionLink("Details", "Details", new { id=item.ScheduledClassId }, new { @class = "btn btn-primary btn-sm" }) |
 
-            @if (User.IsInRole("Admin") || User.IsInRole("Operations Employee"))
+            @if (User.IsInRole("Admin") || User.IsInRole("Scheduling"))
             {
                 @Html.ActionLink("Delete", "Delete", new { id=item.ScheduledClassId }, new { @class = "btn btn-danger btn-sm" })
             }

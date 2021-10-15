@@ -70,10 +70,12 @@
                             @Html.ActionLink("Delete", "Delete", new { id = item.StudentId })
                         }
 
+                        @*TODO - Edit, Delete, Details Icons*@ 
+
                         @*@if (User.IsInRole("Admin"))
                         {
                             <a href="@Url.Action("Edit", "Students", new { id = item.StudentId })">
-                                <i class="fa fa-pencil-square-o action-icons" aria-hidden="true"></i>
+                                <i class="fa fa-pencil" aria-hidden="true"></i>
                             </a>
                         }
 
