@@ -26,7 +26,7 @@ namespace SAT.DATA.EF
         public byte CreditHours { get; set; }
         public string Curriculum { get; set; }
         public string Notes { get; set; }
-        public Nullable<bool> IsActive { get; set; }
+        public bool IsActive { get; set; }
         public string CoursePhoto { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

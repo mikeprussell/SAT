@@ -76,7 +76,7 @@
           <Property Name="CreditHours" Type="tinyint" Nullable="false" />
           <Property Name="Curriculum" Type="nvarchar" MaxLength="250" />
           <Property Name="Notes" Type="nvarchar" MaxLength="500" />
-          <Property Name="IsActive" Type="bit" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
           <Property Name="CoursePhoto" Type="nvarchar" MaxLength="100" />
         </EntityType>
         <EntityType Name="Enrollments">
@@ -371,7 +371,7 @@
           <Property Name="CreditHours" Type="Byte" Nullable="false" />
           <Property Name="Curriculum" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
           <Property Name="Notes" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
-          <Property Name="IsActive" Type="Boolean" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
           <NavigationProperty Name="ScheduledClasses" Relationship="Self.FK_ScheduledClasses_Courses" FromRole="Courses" ToRole="ScheduledClasses" />
           <Property Name="CoursePhoto" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
         </EntityType>

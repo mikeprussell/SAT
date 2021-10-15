@@ -12,7 +12,7 @@ using SAT.UI.MVC.Utilities;
 
 namespace SAT.UI.MVC.Controllers
 {
-     [Authorize(Roles = "Admin")]
+    [Authorize(Roles = "Admin")]
     public class CoursesController : Controller
     {
         private SATEntities db = new SATEntities();
@@ -22,12 +22,43 @@ namespace SAT.UI.MVC.Controllers
         {
             return View(db.Courses.ToList());
         }
-        
+
 
         // GET: Courses
         public ActionResult ListView()
         {
             return View(db.Courses.ToList());
+        }
+
+        // GET: Courses
+        public ActionResult ActiveInactiveCourses(string searchFilter, bool isActiveFilter)
+        {
+            ViewBag.IsActiveFilter = new SelectList(db.Courses.Select(x => x.IsActive).Distinct());
+
+            if (String.IsNullOrEmpty(searchFilter))
+            {
+                var courses = db.Courses;
+                return View(courses.ToList());
+            }
+
+            else if (!String.IsNullOrEmpty(searchFilter))
+            {
+                var courses = db.Courses.Where(x => x.CourseName.Contains(searchFilter));
+                return View(courses.ToList());
+            }
+
+            else if (String.IsNullOrEmpty(searchFilter))
+            {
+                var courses = db.Courses.Where(x => x.IsActive == isActiveFilter);
+                return View(courses.ToList());
+            }
+
+            else
+            {
+                var courses = db.Courses.Where(x => x.IsActive == isActiveFilter && x.CourseName.Contains(searchFilter));
+                return View(courses.ToList());
+            }
+
         }
 
         // GET: Courses/Details/5

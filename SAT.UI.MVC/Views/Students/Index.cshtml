@@ -4,45 +4,41 @@
     ViewBag.Title = "Student";
 }
 
+<section>
+    <div class="container px-4 px-lg-5 mt-5">
+        @if (User.IsInRole("Admin"))
+        {
+            @Html.ActionLink("Create New", "Create", null, new { @class = "btn btn-primary mb-4" })
+        }
+        @Html.ActionLink("List View", "ListView", null, new { @class = "btn btn-info mb-4 float-end" })
 
-@if (User.IsInRole("Admin") || User.IsInRole("Operations Employee"))
-{
-    <p>
-        <a class="btn btn-primary btn-sm" href="@Url.Action("Create", "Students")">Create</a>
-    </p>
-}
+        <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
+            @foreach (var item in Model)
+            {
+                <div class="col mb-5">
+                    <div class="card h-100">
+                        <img src="~/Content/img/studentimages/p_@item.PhotoUrl" alt="@item.FirstName" />
+                        <h2 class="card-title">@item.FirstName @item.LastName</h2>
+                        <h4>@item.Major</h4>
+                        <p class="card-text"> Phone: @item.Phone</p>
+                        <p class="card-text"> @item.Address | @item.City | @item.State</p>
+                        <div class="card-footer">
+                            @*<a class="btn btn-primary btn-sm" href="@Url.Action("Details", "Courses")">Details</a>*@
+                            @Html.ActionLink("Details", "Details", new { id = item.StudentId }, new { @class = "btn btn-primary btn-sm mx-0.5" })
 
-    <section class="py-5">
-        <div class="container px-4 px-lg-5 mt-5">
-            <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
-                @foreach (var item in Model)
-                {
-                    <div class="col mb-5">
-                        <div class="card h-100">
-                            <img src="~/Content/img/studentimages/p_@item.PhotoUrl" alt="@item.FirstName" />
-                            <h2 class="card-title">@item.FirstName @item.LastName</h2>
-                            <h4>@item.Major</h4>
-                            <p class="card-text"> Phone: @item.Phone</p>
-                            <p class="card-text"> @item.Address | @item.City | @item.State</p>
-                            <div class="card-footer">
-                                @*<a class="btn btn-primary btn-sm" href="@Url.Action("Details", "Courses")">Details</a>*@
-                                @Html.ActionLink("Details", "Details", new { id = item.StudentId }, new { @class = "btn btn-primary btn-sm mx-0.5" })
+                            @if (User.IsInRole("Admin"))
+                            {
+                                @Html.ActionLink("Delete", "Delete", new { id = item.StudentId }, new { @class = "btn btn-danger btn-sm mx-1 float-end" })
+                            }
 
-                                @if (User.IsInRole("Admin"))
-                                {
-                                    @*@Html.ActionLink("Edit", "Edit", new { id = item.StudentId }, new { @class = "btn btn-warning btn-sm mx-1" })*@
-
-                                    @Html.ActionLink("Delete", "Delete", new { id = item.StudentId }, new { @class = "btn btn-danger btn-sm mx-1 float-end" })
-                                }
-
-                            </div>
                         </div>
                     </div>
-                }
-            </div>
-           
-            </div>
-    </section>
+                </div>
+            }
+        </div>
+
+    </div>
+</section>
 
 
 @*<table class="table">
@@ -121,14 +117,14 @@
             </td>
             <td>
 
-                @if (User.IsInRole("Admin") || User.IsInRole("Operations Employee"))
+                @if (User.IsInRole("Admin") || User.IsInRole("Scheduling"))
                 {
                     @Html.ActionLink("Edit", "Edit", new { id = item.StudentId })
                 }
 
                 @Html.ActionLink("Details", "Details", new { id = item.StudentId })
 
-                @if (User.IsInRole("Admin") || User.IsInRole("Operations Employee"))
+                @if (User.IsInRole("Admin") || User.IsInRole("Scheduling"))
                 {
                     @Html.ActionLink("Delete", "Delete", new { id = item.StudentId })
                 }

@@ -1,0 +1,98 @@
+﻿@model IEnumerable<SAT.DATA.EF.Student>
+
+@{
+    ViewBag.Title = "Students - List View";
+}
+
+<section>
+    <div class="container px-4 px-lg-5 mt-5">
+        @if (User.IsInRole("Admin"))
+        {
+            @Html.ActionLink("Create New", "Create", null, new { @class = "btn btn-primary mb-4" })
+        }
+        @Html.ActionLink("Tile View", "Index", null, new { @class = "btn btn-info mb-4 float-end" })
+
+        <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
+
+            <table class="table">
+                <tr>
+                    <th></th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.FirstName)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.LastName)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Major)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Email)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.StudentStatus.SSName)
+                    </th>
+                    <th></th>
+                </tr>
+
+                @foreach (var item in Model)
+                {
+                <tr>
+                    <td>
+                        <img src="~/Content/img/studentimages/t_@item.PhotoUrl" alt="Course photo" title="@item.PhotoUrl" />
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.FirstName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.LastName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Major)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Email)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.StudentStatus.SSName)
+                    </td>
+                    <td>
+                        @if (User.IsInRole("Admin"))
+                        {
+                            <span>@Html.ActionLink("Edit", "Edit", new { id = item.StudentId }) |</span>
+                        }
+
+                        @Html.ActionLink("Details", "Details", new { id = item.StudentId })
+
+                        @if (User.IsInRole("Admin"))
+                        {
+                            @:|
+                            @Html.ActionLink("Delete", "Delete", new { id = item.StudentId })
+                        }
+
+                        @*TODO - Edit, Delete, Details Icons*@ 
+
+                        @*@if (User.IsInRole("Admin"))
+                        {
+                            <a href="@Url.Action("Edit", "Students", new { id = item.StudentId })">
+                                <i class="fa fa-pencil" aria-hidden="true"></i>
+                            </a>
+                        }
+
+                        <a href="@Url.Action("Details", "Students", new { id = item.StudentId })">
+                            <i class="fa fa-info-circle action-icons" aria-hidden="true"></i>
+                        </a>
+
+                        @if (User.IsInRole("Admin"))
+                        {
+                            <a href="@Url.Action("Delete", "Students", new { id = item.StudentId })">
+                                <i class="fa fa-trash-o action-icons" aria-hidden="true"></i>
+                            </a>
+                        }*@
+                    </td>
+                </tr>
+                }
+            </table>
+        </div>
+    </div>
+</section>

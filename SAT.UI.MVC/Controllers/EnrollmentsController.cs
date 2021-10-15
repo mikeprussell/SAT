@@ -21,6 +21,14 @@ namespace SAT.UI.MVC.Controllers
             var enrollments = db.Enrollments.Include(e => e.ScheduledClass).Include(e => e.Student);
             return View(enrollments.ToList());
         }
+        
+
+        // GET: Enrollments
+        public ActionResult ListView()
+        {
+            var enrollments = db.Enrollments.Include(e => e.ScheduledClass).Include(e => e.Student);
+            return View(enrollments.ToList());
+        }
 
         // GET: Enrollments/Details/5
         public ActionResult Details(int? id)

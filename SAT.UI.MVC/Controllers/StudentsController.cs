@@ -23,6 +23,13 @@ namespace SAT.UI.MVC.Controllers
             return View(students.ToList());
         }
 
+        // GET: Students
+        public ActionResult ListView()
+        {
+            var students = db.Students.Include(s => s.StudentStatus);
+            return View(students.ToList());
+        }
+
         // GET: Students/Details/5
         public ActionResult Details(int? id)
         {
