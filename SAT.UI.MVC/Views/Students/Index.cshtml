@@ -8,12 +8,11 @@
 @if (User.IsInRole("Admin") || User.IsInRole("Operations Employee"))
 {
     <p>
-        @Html.ActionLink("Create New", "Create")
+        <a class="btn btn-primary btn-sm" href="@Url.Action("Create", "Students")">Create</a>
     </p>
 }
 
     <section class="py-5">
-        <h2 class="text-center">Students</h2>
         <div class="container px-4 px-lg-5 mt-5">
             <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
                 @foreach (var item in Model)
@@ -31,9 +30,9 @@
 
                                 @if (User.IsInRole("Admin"))
                                 {
-                                    @Html.ActionLink("Edit", "Edit", new { id = item.StudentId }, new { @class = "btn btn-warning btn-sm mx-1" })
+                                    @*@Html.ActionLink("Edit", "Edit", new { id = item.StudentId }, new { @class = "btn btn-warning btn-sm mx-1" })*@
 
-                                    @Html.ActionLink("Delete", "Delete", new { id = item.StudentId }, new { @class = "btn btn-danger btn-sm mx-1" })
+                                    @Html.ActionLink("Delete", "Delete", new { id = item.StudentId }, new { @class = "btn btn-danger btn-sm mx-1 float-end" })
                                 }
 
                             </div>
@@ -46,7 +45,7 @@
     </section>
 
 
-<table class="table">
+@*<table class="table">
     <tr>
         <th>
             @Html.DisplayNameFor(model => model.FirstName)
@@ -137,4 +136,4 @@
         </tr>
     }
 
-</table>
+</table>*@

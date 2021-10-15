@@ -197,6 +197,7 @@
     <Content Include="bin\SAT.UI.MVC.pdb" />
     <Content Include="Content\css\custom.css" />
     <Content Include="Content\css\styles.css" />
+    <Content Include="Content\img\20201002-IMG_2300.jpg" />
     <Content Include="Content\img\studentimages\asianbusinessman.png" />
     <Content Include="Content\img\studentimages\asianman.png" />
     <Content Include="Content\img\studentimages\baldblackguy.png" />
