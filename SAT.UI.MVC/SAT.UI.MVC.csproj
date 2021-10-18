@@ -199,6 +199,21 @@
     <Content Include="Content\css\font-awesome.min.css" />
     <Content Include="Content\css\styles.css" />
     <Content Include="Content\img\20201002-IMG_2300.jpg" />
+    <Content Include="Content\img\courseimages\airfocus-K_VeavYEfdA-unsplash.jpg" />
+    <Content Include="Content\img\courseimages\alexander-dummer-aS4Duj2j7r4-unsplash.jpg" />
+    <Content Include="Content\img\courseimages\annie-spratt-QckxruozjRg-unsplash.jpg" />
+    <Content Include="Content\img\courseimages\antenna-FDV1BaKNKEo-unsplash.jpg" />
+    <Content Include="Content\img\courseimages\clarissa-watson-jAebodq7oxk-unsplash.jpg" />
+    <Content Include="Content\img\courseimages\daniel-mccullough-HtBlQdxfG9k-unsplash.jpg" />
+    <Content Include="Content\img\courseimages\lance-anderson-QdAAasrZhdk-unsplash.jpg" />
+    <Content Include="Content\img\courseimages\marga-santoso-OmPqCwX422Y-unsplash.jpg" />
+    <Content Include="Content\img\courseimages\mimi-thian-tPxHQIZU2OQ-unsplash.jpg" />
+    <Content Include="Content\img\courseimages\roman-mager-5mZ_M06Fc9g-unsplash.jpg" />
+    <Content Include="Content\img\courseimages\scott-graham-5fNmWej4tAA-unsplash.jpg" />
+    <Content Include="Content\img\courseimages\spacex-YSvUYqf9Mjk-unsplash.jpg" />
+    <Content Include="Content\img\courseimages\thomas-haas-Rs5FCVANby0-unsplash.jpg" />
+    <Content Include="Content\img\courseimages\thomas-kelley-hHL08lF7Ikc-unsplash.jpg" />
+    <Content Include="Content\img\courseimages\victor-LfdSq_J9QOY-unsplash.jpg" />
     <Content Include="Content\img\studentimages\asianbusinessman.png" />
     <Content Include="Content\img\studentimages\asianman.png" />
     <Content Include="Content\img\studentimages\baldblackguy.png" />
@@ -329,7 +344,6 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="bin\roslyn\" />
-    <Folder Include="Content\img\courseimages\" />
     <Folder Include="obj\Debug\TempPE\" />
   </ItemGroup>
   <ItemGroup>
