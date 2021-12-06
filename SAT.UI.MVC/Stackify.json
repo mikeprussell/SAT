@@ -1,6 +1,5 @@
-
-  {
-    "AppName": "SAT.UI.MVC",
-    "Environment": "My Environment"
-    //"CaptureAllExceptions": true
-  }
+{
+  "AppName": "SAT.UI.MVC",
+  "Environment": "My Environment"
+  //"CaptureAllExceptions": true
+}

@@ -7,7 +7,7 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using SAT.DATA.EF;
-using Serilog; //access to LoggerConfiguration
+using Serilog;
 
 namespace SAT.UI.MVC.Controllers
 {
@@ -50,15 +50,6 @@ namespace SAT.UI.MVC.Controllers
             {
                 return HttpNotFound();
             }
-            //Serilog 'Fatal' log test
-            //var stackifyLogger = new LoggerConfiguration()
-            //    .Enrich.WithProperty("Version", "1.0.0")
-            //    .WriteTo.Stackify()
-            //    .CreateLogger();
-            //stackifyLogger.Fatal("Serilog to Retrace, Fatal level");
-
-
-
             return View(enrollment);
         }
 

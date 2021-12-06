@@ -286,9 +286,7 @@
     <Content Include="_Archive\oldbootstrap\bootstrap.min.css" />
     <Content Include="_Archive\oldbootstrap\Site.css" />
     <Content Include="Content\assets\DocumentationSAT.pdf" />
-    <Content Include="log4net.config">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
+    <Content Include="log4net.config" />
     <None Include="Properties\PublishProfiles\FolderProfile.pubxml" />
     <None Include="Properties\PublishProfiles\FolderProfile1.pubxml" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
