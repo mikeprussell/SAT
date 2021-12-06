@@ -9,6 +9,7 @@ using System.Web.Mvc;
 using SAT.DATA.EF;
 using SAT.UI.MVC.Utilities;
 using System.Drawing;
+using Serilog; //to access LoggerConfiguration
 namespace SAT.UI.MVC.Controllers
 {
     [Authorize]
@@ -19,7 +20,13 @@ namespace SAT.UI.MVC.Controllers
         // GET: Students
         public ActionResult Index()
         {
+            //SERILOG
             var students = db.Students.Include(s => s.StudentStatus);
+            var stackifyLogger = new LoggerConfiguration()
+                .MinimumLevel.Information().WriteTo.Stackify()
+                .CreateLogger();
+            stackifyLogger.Debug("Serilog Debug Student-Index");
+
             return View(students.ToList());
         }
 

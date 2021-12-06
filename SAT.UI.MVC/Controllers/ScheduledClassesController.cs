@@ -6,18 +6,25 @@ using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
+//using log4net;
 using SAT.DATA.EF;
+using Serilog; //To access LoggerConfiguration
 
 namespace SAT.UI.MVC.Controllers
 {
     [Authorize]
     public class ScheduledClassesController : Controller
     {
-        private SATEntities db = new SATEntities();
+        //log4net log method
+        private static readonly log4net.ILog log = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
+
+        private SATEntities db = new SATEntities();    
 
         // GET: ScheduledClasses
         public ActionResult Index()
-        {
+        {     
+            //LOG4NET
+            log.Info("Display-Student-Schedule");
             var scheduledClasses = db.ScheduledClasses.Include(s => s.Course).Include(s => s.ScheduledClassStatus);
             return View(scheduledClasses.ToList());
         }
@@ -25,6 +32,8 @@ namespace SAT.UI.MVC.Controllers
         // GET: ScheduledClasses/Details/5
         public ActionResult Details(int? id)
         {
+    
+         
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
@@ -34,7 +43,15 @@ namespace SAT.UI.MVC.Controllers
             {
                 return HttpNotFound();
             }
+            //var stackifyLogger = new LoggerConfiguration()
+            //    .WriteTo.Stackify()
+            //    .CreateLogger();
+            //stackifyLogger.Fatal("");
+
+            //LOG4NET
+            Log.Debug("Log4net to Retrace // Scheduled Class Details - Classes Displayed");
             return View(scheduledClass);
+           
         }
 
         // GET: ScheduledClasses/Create

@@ -33,3 +33,6 @@ using System.Runtime.InteropServices;
 // by using the '*' as shown below:
 [assembly: AssemblyVersion("1.0.0.0")]
 [assembly: AssemblyFileVersion("1.0.0.0")]
+
+//The following assembly is for configuring log4net (v2.0.13)
+[assembly: log4net.Config.XmlConfigurator(ConfigFile = "log4net.config")]

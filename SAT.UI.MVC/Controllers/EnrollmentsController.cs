@@ -7,17 +7,23 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using SAT.DATA.EF;
+using Serilog; //access to LoggerConfiguration
 
 namespace SAT.UI.MVC.Controllers
 {
     [Authorize]
     public class EnrollmentsController : Controller
     {
+        //log4net log method
+        private static readonly log4net.ILog log = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
+
         private SATEntities db = new SATEntities();
 
         // GET: Enrollments
         public ActionResult Index()
         {
+            //LOG4NET
+            log.Info("Enrollment-Log");
             var enrollments = db.Enrollments.Include(e => e.ScheduledClass).Include(e => e.Student);
             return View(enrollments.ToList());
         }
@@ -33,6 +39,8 @@ namespace SAT.UI.MVC.Controllers
         // GET: Enrollments/Details/5
         public ActionResult Details(int? id)
         {
+            //LOG4NET
+            log.Fatal("Log4net to Retrace Enrollment-Details");
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
@@ -42,6 +50,15 @@ namespace SAT.UI.MVC.Controllers
             {
                 return HttpNotFound();
             }
+            //Serilog 'Fatal' log test
+            //var stackifyLogger = new LoggerConfiguration()
+            //    .Enrich.WithProperty("Version", "1.0.0")
+            //    .WriteTo.Stackify()
+            //    .CreateLogger();
+            //stackifyLogger.Fatal("Serilog to Retrace, Fatal level");
+
+
+
             return View(enrollment);
         }
 

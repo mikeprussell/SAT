@@ -14,6 +14,10 @@ namespace SAT.UI.MVC.Controllers
     [Authorize(Roles = "Admin")]
     public class RolesAdminController : Controller
     {
+
+        //log4net log method
+        private static readonly log4net.ILog log = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
+
         public RolesAdminController()
         {
         }
